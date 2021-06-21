@@ -19,7 +19,7 @@ func BackOffRetryMaxTimesMaxDurationUntilNoError(maxTimes int64, maxDuration tim
 	if maxDuration < 1*time.Minute {
 		return errors.Errorf("second input parameter error, maxDuration should be at least 1 minite.\n")
 	}
-	for true {
+	for {
 		lastError = inputFunc()
 		if lastError == nil {
 			break
