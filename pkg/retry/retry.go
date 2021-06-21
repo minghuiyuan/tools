@@ -7,8 +7,8 @@ import (
 )
 
 // BackOffDelayDurationByMins : retry until function return nil
-// you should put you retry contents into inputF, if no need to retry, return nil
-// for every retry, will sleep for 1,2,4,8,16, maxDuration,maxDuration, ... minutes
+// maxTimes: max retry times, and if it has retry for maxTimes and inputFunc still not return nil, will return last error
+// maxDuration: max sleep durations, for every retry, will sleep for 1,2,4,8,16, maxDuration,maxDuration, ... minutes
 func BackOffRetryMaxTimesMaxDurationUntilNoError(maxTimes int64, maxDuration time.Duration, inputFunc func() error) error {
 	var times int64 = 1
 	var dur int64 = 1
